@@ -428,3 +428,92 @@ console.log(calculate(10, "+", 5));
 console.log(calculate(10, "-", 4));
 console.log(calculate(10, "*", 5));
 console.log(calculate(10, "/", 0));
+
+// Task 39
+function pyramid(rows) {
+
+  for (let i = 1; i <= rows; i++) {
+    let stars = "";
+    for (let j = 1; j <= i * 2 - 1; j++) {
+      stars += "*";
+    }
+    console.log(stars);
+  }
+}
+pyramid(5);
+
+// Task 40
+function collatz(n) {
+  // If n is already 1 
+  if (n === 1) { 
+    return 1; 
+  }
+
+  let steps = 0;
+    while (n !== 1) {
+      if (n % 2 === 0) {
+        n = n / 2;
+      }
+      else {
+        n = n * 3 + 1;
+      }
+    // Print each step 
+    console.log(n);
+    steps++;
+  }
+  return `${steps} steps`;
+}
+console.log(collatz(6));
+
+// Task 41
+function numberToWord(n) {
+  const words = ["zero","one","two","three","four","five","six","seven","eight","nine","ten",
+    "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"];
+
+  if (n < 1 || n > 20) {
+    return "out of range";
+  }
+  return words[n];
+}
+console.log(numberToWord(7));
+console.log(numberToWord(15));
+console.log(numberToWord(25));
+
+// Task 42
+let balance = 1000;
+
+function deposit(amount) {
+  if (amount > 0) {
+    balance += amount;
+    console.log(`Deposited ${amount}`);
+  }
+  else {
+    console.log("Invalid deposit amount");
+  }
+}
+
+function withdraw(amount) {
+
+  if (amount > 0 && amount <= balance) {
+    balance -= amount;
+    console.log(`Withdrew ${amount}`);
+  }
+  else {
+    console.log("Withdrawal failed");
+  }
+}
+
+function getBalance() {
+  return balance;
+}
+
+console.log(`Balance: ${getBalance()}`);
+
+deposit(500);
+console.log(getBalance());
+
+withdraw(200);
+console.log(getBalance());
+
+withdraw(2000);
+console.log(getBalance());
