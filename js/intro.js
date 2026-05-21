@@ -264,3 +264,167 @@ for (let i = 1; i <= 5; i++) {
   }
   console.log(stars);
 }
+
+//+++ FUNCTIONS 
+
+// Task 29
+function celsiusToFahrenheit(c) {
+  return (c * 9 / 5) + 32;
+}
+console.log(celsiusToFahrenheit(0));
+console.log(celsiusToFahrenheit(100));
+console.log(celsiusToFahrenheit(37));
+
+// Task 30
+const isEven = (n) => {
+  return n % 2 === 0;
+};
+const isOdd = (n) => {
+  return !isEven(n);
+};
+console.log(isEven(4));
+console.log(isOdd(7));
+console.log(isEven(3));
+
+// Task 31
+function greet(name, greeting = "Hello") {
+  console.log(`${greeting}, ${name}!`);
+}
+greet("Omar", "Good morning");
+greet("Sara");
+
+// Task 32
+function maxOfThree(a, b, c) {
+  if (a >= b && a >= c) {
+    return a;
+  }
+  else if (b >= a && b >= c) {
+    return b;
+  }
+  else {
+    return c;
+  }
+}
+console.log(maxOfThree(3, 17, 9));
+
+// Task 33
+function countVowels(str) {
+  let count = 0;
+  let vowels = "aeiou";
+
+  for (let char of str.toLowerCase()) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(countVowels("Hello World"));
+
+// Task 34
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+console.log(factorial(0));
+console.log(factorial(5));
+console.log(factorial(7));
+
+// Task 35
+function isPalindrome(str) {
+  let cleaned = str.toLowerCase().replaceAll(" ", "");
+  let reversed = "";
+
+  for (let i = cleaned.length - 1; i >= 0; i--) {
+    reversed += cleaned[i];
+  }
+  return cleaned === reversed;
+}
+console.log(isPalindrome("racecar"));
+console.log(isPalindrome("hello"));
+console.log(isPalindrome("Never Odd Or Even"));
+
+// Task 36
+let studentName = "Sara";
+let scores = [80, 70, 75, 90, 68];
+
+function generateReport(name, scores) {
+  let total = 0;
+
+  for (let i = 0; i < scores.length; i++) {
+    total += scores[i];
+  }
+
+  let average = total / scores.length;
+  let grade;
+
+  if (average >= 90) {
+    grade = "A";
+  }
+  else if (average >= 80) {
+    grade = "B";
+  }
+  else if (average >= 70) {
+    grade = "C";
+  }
+  else if (average >= 60) {
+    grade = "D";
+  }
+  else {
+    grade = "F";
+  }
+  console.log(`${name} | Avg: ${average.toFixed(1)} | Grade: ${grade}`);
+}
+generateReport(studentName, scores);
+
+// Task 37
+const secretNumber = 42;
+function checkGuess(guess) {
+  if (guess < secretNumber) {
+    return "Too low";
+  }
+  else if (guess > secretNumber) {
+    return "Too high";
+  }
+  else {
+    return "Correct!";
+  }
+}
+let guesses = [10, 60, 42];
+
+for (let i = 0; i < guesses.length; i++) {
+  console.log(checkGuess(guesses[i]));
+}
+
+// Task 38
+function calculate(a, operator, b) {
+  switch (operator) {
+    case "+":
+      return a + b;
+
+    case "-":
+      return a - b;
+
+    case "*":
+      return a * b;
+
+    case "/":
+      if (b === 0) {
+        return "Error: division by zero";
+      }
+      return a / b;
+
+    default:
+      return "Error: unknown operator";
+  }
+}
+console.log(calculate(10, "+", 5));
+console.log(calculate(10, "-", 4));
+console.log(calculate(10, "*", 5));
+console.log(calculate(10, "/", 0));
