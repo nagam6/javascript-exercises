@@ -132,33 +132,29 @@ const foundUser = users.find(user =>
 
 // TASK 12 — Create Platform Statistics
 
-const totalUsers = users.length;
-const totalPosts = posts.length;
+const statsTotalUsers = users.length;
+const statsTotalPosts = posts.length;
 
-const totalLikes = posts.reduce((total, post) => {
+const statsTotalLikes = posts.reduce((total, post) => {
   return total + post.likes;
 }, 0);
 
-const averageLikesPerPost = totalLikes / totalPosts;
+const statsAverageLikesPerPost = statsTotalLikes / statsTotalPosts;
 
-const categoryCounts = posts.reduce((counts, post) => {
-
-  // If category already exists
+const statsCategoryCounts = posts.reduce((counts, post) => {
   if (counts[post.category]) {
     counts[post.category]++;
-  }
-  // First time category appears
-  else {
+  } else {
     counts[post.category] = 1;
   }
   return counts;
 }, {});
 
-const mostPopularCategory = Object.keys(categoryCounts).reduce(
+const statsMostPopularCategory = Object.keys(statsCategoryCounts).reduce(
   (mostPopular, currentCategory) => {
     if (
-      categoryCounts[currentCategory] >
-      categoryCounts[mostPopular]
+      statsCategoryCounts[currentCategory] >
+      statsCategoryCounts[mostPopular]
     ) {
       return currentCategory;
     }
@@ -167,11 +163,11 @@ const mostPopularCategory = Object.keys(categoryCounts).reduce(
 );
 
 const platformStatistics = {
-  totalUsers: totalUsers,
-  totalPosts: totalPosts,
-  totalLikes: totalLikes,
-  averageLikesPerPost: averageLikesPerPost,
-  mostPopularCategory: mostPopularCategory,
+  totalUsers: statsTotalUsers,
+  totalPosts: statsTotalPosts,
+  totalLikes: statsTotalLikes,
+  averageLikesPerPost: statsAverageLikesPerPost,
+  mostPopularCategory: statsMostPopularCategory,
 };
 
 console.log(platformStatistics);
