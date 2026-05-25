@@ -147,7 +147,6 @@ const categoryCounts = posts.reduce((counts, post) => {
   if (counts[post.category]) {
     counts[post.category]++;
   }
-
   // First time category appears
   else {
     counts[post.category] = 1;
